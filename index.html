@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rizqi Aprilianes — Data Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #eef2f6;
+      --paper: #f7f9fb;
+      --navy: #17233b;
+      --text: #596579;
+      --line: #cbd3dc;
+      --green: #397c70;
+      --green-soft: #dfece8;
+      --gold: #b48a39;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--navy);
+      font-family: "DM Mono", monospace;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 28px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(238,242,246,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 21px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 500;
+      letter-spacing: .12em;
+      font-size: .95rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: .76rem;
+      letter-spacing: .06em;
+      color: var(--text);
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: .82rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Libre Baskerville", serif;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.7rem);
+      line-height: 1.04;
+      max-width: 1000px;
+      margin-bottom: 30px;
+    }
+
+    .hero-description {
+      color: var(--text);
+      max-width: 750px;
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 17px;
+      border: 1px solid var(--navy);
+      font-size: .78rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn:hover {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .8rem;
+      margin-bottom: 10px;
+    }
+
+    .section-heading {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      margin-bottom: 50px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 70px;
+      border-top: 1px solid var(--line);
+      padding-top: 45px;
+    }
+
+    .about-number {
+      color: var(--gold);
+      font-size: 2rem;
+    }
+
+    .about-text {
+      color: var(--text);
+      max-width: 760px;
+      font-size: 1rem;
+      line-height: 1.95;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+    }
+
+    #work, #experience, #toolkit {
+      border-top: 1px solid var(--line);
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 1.55fr .65fr;
+    }
+
+    .project-content {
+      padding: 48px;
+    }
+
+    .project-category {
+      color: var(--green);
+      font-size: .8rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .project-title {
+      font-size: clamp(2.1rem, 5vw, 3.7rem);
+      line-height: 1.17;
+      margin-bottom: 24px;
+    }
+
+    .project-description {
+      color: var(--text);
+      line-height: 1.9;
+      max-width: 700px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 28px;
+      margin: 38px 0 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .metric-value {
+      font-size: 1.9rem;
+      font-weight: 500;
+    }
+
+    .metric-label {
+      color: var(--text);
+      font-size: .7rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .tags, .impact-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      padding: 7px 11px;
+      color: var(--text);
+      font-size: .75rem;
+    }
+
+    .project-actions {
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .project-action {
+      padding: 26px;
+      border-top: 1px solid var(--line);
+      text-transform: uppercase;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      transition: .2s;
+    }
+
+    .project-action:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    .process {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .process-step {
+      padding: 25px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .process-number, .tool-number {
+      color: var(--gold);
+      font-size: .75rem;
+      margin-bottom: 14px;
+    }
+
+    .process-name, .tool-name {
+      font-family: "Libre Baskerville", serif;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .process-description {
+      color: var(--text);
+      font-size: .74rem;
+    }
+
+    .ledger {
+      border-top: 1px solid var(--line);
+    }
+
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 45px;
+      padding: 50px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .exhibit {
+      color: var(--text);
+      font-size: .8rem;
+    }
+
+    .exhibit-number {
+      color: var(--gold);
+      font-size: 2rem;
+      margin-top: 6px;
+    }
+
+    .experience-date, .experience-company {
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .experience-role {
+      font-size: clamp(1.8rem,4vw,3rem);
+      margin-bottom: 8px;
+    }
+
+    .impact-list {
+      margin-bottom: 25px;
+    }
+
+    .impact {
+      padding: 8px 11px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: .76rem;
+      font-weight: 500;
+    }
+
+    .experience-points {
+      padding-left: 20px;
+      color: var(--text);
+      max-width: 820px;
+    }
+
+    .experience-points li {
+      margin-bottom: 12px;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      border-left: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+    }
+
+    .tool {
+      padding: 26px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.2);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 70px 0 80px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-title {
+      font-family: "Libre Baskerville", serif;
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-copy {
+      color: var(--text);
+      max-width: 560px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+      text-transform: uppercase;
+      font-size: .75rem;
+    }
+
+    @media(max-width:780px) {
+      .container { padding: 0 20px; }
+      nav { padding: 18px 20px; }
+      .nav-links { display: none; }
+      .hero { min-height: auto; padding: 80px 0 70px; }
+      h1 { font-size: 3.2rem; }
+      section { padding: 70px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 25px; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-content { padding: 28px 23px; }
+      .project-actions { border-left: 0; border-top: 1px solid var(--line); }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .process { grid-template-columns: 1fr 1fr; }
+      .ledger-row { grid-template-columns: 1fr; gap: 22px; }
+      .tool-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">R. APRILIANES</div>
+
+    <div class="nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#work">WORK</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#toolkit">TOOLKIT</a>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">MATHEMATICS · DATA · ANALYTICS</div>
+
+      <h1>Rizqi<br>Aprilianes.</h1>
+
+      <p class="hero-description">
+        Mathematics graduate with hands-on experience working with
+        large-scale operational data, data cleaning, validation,
+        and statistical workflows. I enjoy turning messy datasets
+        into structured, reliable information that can actually be used.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#work" class="btn btn-primary">Explore my work →</a>
+        <a href="#experience" class="btn">Experience</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+
+    <div class="section-label">01 — PROFILE</div>
+
+    <h2 class="section-heading">
+      A mathematics background,<br>
+      applied to real data.
+    </h2>
+
+    <div class="about-grid">
+      <div class="about-number">01</div>
+
+      <div class="about-text">
+        <p>
+          My background in Mathematics shaped the way I approach data:
+          understand the structure first, identify inconsistencies,
+          and solve problems systematically.
+        </p>
+
+        <p>
+          During my experience at BPS Kota Bogor, I worked with
+          operational datasets that required cleaning, validation,
+          standardization, and duplicate detection before they could
+          be reliably used.
+        </p>
+
+        <p>
+          This portfolio documents selected workflows and projects
+          reconstructed using synthetic or public-safe data.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+
+    <div class="section-label">02 — SELECTED WORK</div>
+
+    <h2 class="section-heading">Projects.</h2>
+
+    <div class="project-card">
+
+      <div class="project-content">
+
+        <div class="project-category">
+          DATA QUALITY · PYTHON
+        </div>
+
+        <h3 class="project-title">
+          Large-Scale Data Cleaning
+          & Deduplication
+        </h3>
+
+        <p class="project-description">
+          A reconstruction of a data-quality workflow developed
+          from my experience processing a dataset containing more
+          than 191,000 records.
+
+          The workflow standardizes inconsistent name and address
+          formats, detects duplicate records, and retains one
+          representative record from each duplicate group.
+        </p>
+
+        <div class="metrics">
+
+          <div>
+            <div class="metric-value">191K+</div>
+            <div class="metric-label">Records Processed</div>
+          </div>
+
+          <div>
+            <div class="metric-value">46K+</div>
+            <div class="metric-label">Duplicate Records</div>
+          </div>
+
+          <div>
+            <div class="metric-value">3</div>
+            <div class="metric-label">Matching Rules</div>
+          </div>
+
+        </div>
+
+        <div class="tags">
+          <div class="tag">Python</div>
+          <div class="tag">Pandas</div>
+          <div class="tag">Regex</div>
+          <div class="tag">Data Cleaning</div>
+          <div class="tag">Deduplication</div>
+        </div>
+
+      </div>
+
+      <div class="project-actions">
+
+        <a
+          class="project-action"
+          href="https://ozrxjrkttmgul.streamlit.app"
+          target="_blank">
+          Open Live Demo →
+        </a>
+
+        <a
+          class="project-action"
+          href="https://github.com/rzqprlns/bps-data-deduplication"
+          target="_blank">
+          View Repository →
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="process">
+
+      <div class="process-step">
+        <div class="process-number">01</div>
+        <div class="process-name">Raw Data</div>
+        <div class="process-description">
+          Load and inspect records from the original CSV structure.
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">02</div>
+        <div class="process-name">Standardize</div>
+        <div class="process-description">
+          Normalize inconsistent names and address formatting.
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">03</div>
+        <div class="process-name">Match</div>
+        <div class="process-description">
+          Compare records using name, address, and combined rules.
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">04</div>
+        <div class="process-name">Deduplicate</div>
+        <div class="process-description">
+          Retain one representative record from duplicate groups.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="experience">
+  <div class="container">
+
+    <div class="section-label">03 — EXPERIENCE</div>
+
+    <h2 class="section-heading">
+      Career ledger.
+    </h2>
+
+    <div class="ledger">
+
+      <div class="ledger-row">
+
+        <div>
+          <div class="exhibit">EXHIBIT</div>
+          <div class="exhibit-number">01</div>
+        </div>
+
+        <div>
+          <div class="experience-date">
+            BPS KOTA BOGOR
+          </div>
+
+          <h3 class="experience-role">
+            Statistical Assistant
+          </h3>
+
+          <div class="experience-company">
+            Badan Pusat Statistik · Kota Bogor
+          </div>
+
+          <div class="impact-list">
+            <div class="impact">191K+ RECORD WORKFLOW</div>
+            <div class="impact">PYTHON DATA CLEANING</div>
+            <div class="impact">DATA QUALITY</div>
+          </div>
+
+          <ul class="experience-points">
+            <li>
+              Worked with large operational datasets requiring
+              validation, cleaning, and standardization.
+            </li>
+
+            <li>
+              Used Python and Pandas to process inconsistent
+              textual records and support duplicate detection.
+            </li>
+
+            <li>
+              Supported statistical and data-related workflows
+              for internal operational needs.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="ledger-row">
+
+        <div>
+          <div class="exhibit">EXHIBIT</div>
+          <div class="exhibit-number">02</div>
+        </div>
+
+        <div>
+          <div class="experience-date">
+            OCT 2024 — JAN 2025
+          </div>
+
+          <h3 class="experience-role">
+            Tax Administration Intern
+          </h3>
+
+          <div class="experience-company">
+            KPP Pratama Bandung Cibeunying · DJP
+          </div>
+
+          <div class="impact-list">
+            <div class="impact">ADMINISTRATION</div>
+            <div class="impact">DATA VALIDATION</div>
+            <div class="impact">COMPLIANCE</div>
+          </div>
+
+          <ul class="experience-points">
+            <li>
+              Supported administrative activities within
+              the Supervision Section.
+            </li>
+
+            <li>
+              Assisted workflows related to taxpayer compliance
+              monitoring and administrative records.
+            </li>
+
+            <li>
+              Worked with structured documentation requiring
+              accuracy and consistency.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="toolkit">
+  <div class="container">
+
+    <div class="section-label">04 — TOOLKIT</div>
+
+    <h2 class="section-heading">
+      What I work with.
+    </h2>
+
+    <div class="tool-grid">
+
+      <div class="tool">
+        <div class="tool-number">01</div>
+        <div class="tool-name">Python</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">02</div>
+        <div class="tool-name">Pandas</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">03</div>
+        <div class="tool-name">SQL</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">04</div>
+        <div class="tool-name">Excel</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">05</div>
+        <div class="tool-name">Google Sheets</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">06</div>
+        <div class="tool-name">Data Cleaning</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">07</div>
+        <div class="tool-name">Statistics</div>
+      </div>
+
+      <div class="tool">
+        <div class="tool-number">08</div>
+        <div class="tool-name">Canva</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="section-label">
+          GET IN TOUCH
+        </div>
+
+        <div class="footer-title">
+          Let's work with data.
+        </div>
+
+        <div class="footer-copy">
+          Open to opportunities in data, analytics,
+          operations, and related roles.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a
+          href="https://github.com/rzqprlns"
+          target="_blank">
+          GitHub ↗
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+</body>
+  </html>
+  
